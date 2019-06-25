@@ -10,6 +10,7 @@ const main = async (address, privateKey) => {
   const { utxos } = JSON.parse(utxoRes.outputData)
   const utxo = utxos.reverse()[0]
 
+  if (!utxo) throw new Error('No UTXO to exit')
   const exitDataRes = await mesg.executeTaskAndWaitResult({
     serviceID: 'plasma-watcher',
     taskKey: 'getExitData',
