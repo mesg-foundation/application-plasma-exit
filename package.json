@@ -1,0 +1,19 @@
+{
+  "name": "omisego",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@omisego/omg-js-rootchain": "^2.0.0-v0.2",
+    "@omisego/omg-js-util": "^2.0.0-v0.2",
+    "bn.js": "^4.11.8",
+    "mesg-js": "^2.1.0"
+  }
+}
