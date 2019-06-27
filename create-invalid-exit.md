@@ -8,9 +8,8 @@
 
 # Transact
 
-`mesg-cli service:execute plasma-watcher sendTransaction --data from=$ALICE_ADDRESS --data to=$BOB_ADDRESS --data amount=100000 --data privateKey=$ALICE_PRIVATE_KEY`
+`mesg-cli service:execute plasma-watcher sendTransaction --data from=$ALICE_ADDRESS --data to=$BOB_ADDRESS --data amount=100000 --data privateKey=$ALICE_PRIVATE_KEY --data utxos="[$(cat utxo.json)]" `
 
 # Exit first UTXO
 
-`node ./invalid_exit.js`
-
+`node exit.js "$(cat utxo.json)`
