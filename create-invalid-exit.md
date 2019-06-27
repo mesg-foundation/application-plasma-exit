@@ -1,6 +1,6 @@
 # Deposit
 
-`node deposit.js 100000`
+`node scripts/deposit.js 100000`
 
 # Get UTXOs
 
@@ -12,4 +12,4 @@
 
 # Exit first UTXO
 
-`node exit.js "$(cat utxo.json)`
+`node scripts/exit.js "$(cat utxo.json)`

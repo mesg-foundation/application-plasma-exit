@@ -1,4 +1,4 @@
-const mesg = require('mesg-js').application(require('./config')())
+const mesg = require('mesg-js').application(require('../config')())
 const { transaction } = require('@omisego/omg-js-util')
 
 const main = async (address, privateKey, value) => {

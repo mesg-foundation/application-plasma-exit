@@ -1,4 +1,4 @@
-const mesg = require('mesg-js').application(require('./config')())
+const mesg = require('mesg-js').application(require('../config')())
 
 const main = async (utxo, privateKey) => {
   const exitDataRes = await mesg.executeTaskAndWaitResult({
@@ -33,4 +33,4 @@ if (!process.argv[2]) throw new Error('UTXO missing')
 const utxo = JSON.parse(process.argv[2])
 
 console.log(`[ALICE] Exiting`, utxo)
-main(utxo, process.env.ALICE_PRIVATE_KEY)
+main(utxo, process.env.BOB_PRIVATE_KEY)
