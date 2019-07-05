@@ -1,19 +1,19 @@
-const mesg = require('mesg-js').application(require('../config')())
+const mesg = require('mesg-js').application()
 
 const main = async (utxo, privateKey) => {
   const exitDataRes = await mesg.executeTaskAndWaitResult({
-    serviceID: 'plasma-watcher',
+    instanceHash: await mesg.resolve('plasma-watcher'),
     taskKey: 'getExitData',
-    inputData: JSON.stringify(utxo)
+    inputs: JSON.stringify(utxo)
   })
 
-  const exitData = JSON.parse(exitDataRes.outputData)
+  const exitData = JSON.parse(exitDataRes.outputs)
   console.log('exit data', exitData)
 
   const exitRes = await mesg.executeTaskAndWaitResult({
-    serviceID: 'evm-contract',
+    instanceHash: await mesg.resolve('evm-contract'),
     taskKey: 'execute',
-    inputData: JSON.stringify({
+    inputs: JSON.stringify({
       method: "startStandardExit",
       privateKey,
       inputs: [
@@ -25,7 +25,7 @@ const main = async (utxo, privateKey) => {
     })
   })
 
-  console.log(exitRes.outputData)
+  console.log(exitRes.outputs)
 }
 
 if (!process.argv[2]) throw new Error('UTXO missing')
@@ -33,4 +33,4 @@ if (!process.argv[2]) throw new Error('UTXO missing')
 const utxo = JSON.parse(process.argv[2])
 
 console.log(`[ALICE] Exiting`, utxo)
-main(utxo, process.env.BOB_PRIVATE_KEY)
+main(utxo, process.env.ALICE_PRIVATE_KEY)

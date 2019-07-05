@@ -1,13 +1,13 @@
-const mesg = require('mesg-js').application(require('../config')())
+const mesg = require('mesg-js').application()
 const { transaction } = require('@omisego/omg-js-util')
 
 const main = async (address, privateKey, value) => {
   const depositTx = await transaction.encodeDeposit(address, value, transaction.ETH_CURRENCY)
 
   const res = await mesg.executeTaskAndWaitResult({
-    serviceID: 'evm-contract',
+    instanceHash: await mesg.resolve('evm-contract'),
     taskKey: 'execute',
-    inputData: JSON.stringify({
+    inputs: JSON.stringify({
       method: "deposit",
       privateKey,
       inputs: [depositTx],
