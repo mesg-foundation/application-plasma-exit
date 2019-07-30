@@ -7,7 +7,7 @@ const main = async (address, privateKey, value) => {
   const res = await mesg.executeTaskAndWaitResult({
     instanceHash: await mesg.resolve('evm-contract'),
     taskKey: 'execute',
-    inputs: JSON.stringify({
+    inputs: mesg.encodeData({
       method: "deposit",
       privateKey,
       inputs: [depositTx],

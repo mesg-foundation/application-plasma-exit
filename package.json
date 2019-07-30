@@ -14,6 +14,6 @@
     "@omisego/omg-js-rootchain": "^2.0.0-v0.2",
     "@omisego/omg-js-util": "^2.0.0-v0.2",
     "bn.js": "^4.11.8",
-    "mesg-js": "^4.1.0"
+    "mesg-js": "^4.2.0"
   }
 }

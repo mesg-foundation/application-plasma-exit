@@ -4,16 +4,16 @@ const main = async (utxo, privateKey) => {
   const exitDataRes = await mesg.executeTaskAndWaitResult({
     instanceHash: await mesg.resolve('plasma-watcher'),
     taskKey: 'getExitData',
-    inputs: JSON.stringify(utxo)
+    inputs: mesg.encodeData(utxo)
   })
 
-  const exitData = JSON.parse(exitDataRes.outputs)
+  const exitData = mesg.decodeData(exitDataRes.outputs)
   console.log('exit data', exitData)
 
   const exitRes = await mesg.executeTaskAndWaitResult({
     instanceHash: await mesg.resolve('evm-contract'),
     taskKey: 'execute',
-    inputs: JSON.stringify({
+    inputs: mesg.encodeData({
       method: "startStandardExit",
       privateKey,
       inputs: [

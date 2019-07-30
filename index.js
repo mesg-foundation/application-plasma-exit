@@ -9,25 +9,25 @@ const challengeInvalidExits = (watcher, contract) => {
     }
   })
     .on('data', async event => {
-      const invalidExit = JSON.parse(event.data)
+      const invalidExit = mesg.decodeData(event.data)
 
       console.log('Receiving an invalid exit', invalidExit)
 
       const challengeResponse = await mesg.executeTaskAndWaitResult({
         instanceHash: watcher,
         taskKey: 'getChallengeData',
-        inputs: JSON.stringify({
+        inputs: mesg.encodeData({
           utxo_pos: invalidExit.utxo_pos
         })
       })
-      const challenge = JSON.parse(challengeResponse.outputs)
+      const challenge = mesg.decodeData(challengeResponse.outputs)
 
       console.log('Challenging the invalid exit', challenge)
 
       const challengeExitResponse = await mesg.executeTaskAndWaitResult({
         instanceHash: contract,
         taskKey: 'execute',
-        inputs: JSON.stringify({
+        inputs: mesg.encodeData({
           method: 'challengeStandardExit',
           privateKey: process.env.BOB_PRIVATE_KEY,
           inputs: [
@@ -39,7 +39,7 @@ const challengeInvalidExits = (watcher, contract) => {
         })
       })
 
-      console.log('Challenge sent', JSON.parse(challengeExitResponse.outputs))
+      console.log('Challenge sent', mesg.decodeData(challengeExitResponse.outputs))
     })
 }
 
