@@ -41,7 +41,7 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
 
 ```
 
-## plasma-contract
+## Start the plasma root chain
 
 Service to access to the root contract based on the address in the .env.
 
@@ -55,7 +55,7 @@ mesg-cli service:dev https://github.com/mesg-foundation/service-ethereum-contrac
   --env CONTRACT_ABI="$(curl -s https://raw.githubusercontent.com/omisego/omg-js/master/packages/omg-js-rootchain/src/contracts/RootChain.json | jq .abi)"
 ```
 
-## plasma-watcher
+## Start the plasma watcher
 
 OmiseGo watcher based on the http://watcher.samrong.omg.network/ API.
 
@@ -63,3 +63,13 @@ Start with
 ```bash
 mesg-cli service:dev https://github.com/mesg-foundation/service-plasma-omisego-watcher
 ```
+
+## Start the application 
+
+```
+node index.js
+```
+
+## Create an invalid exit
+
+[Check how to create an invalid exit](./create-invalid-exit.md)
