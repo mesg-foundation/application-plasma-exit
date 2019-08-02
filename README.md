@@ -64,10 +64,10 @@ Start with
 mesg-cli service:dev https://github.com/mesg-foundation/service-plasma-omisego-watcher
 ```
 
-## Start the application 
+## Deploy the workflow
 
 ```
-node index.js
+mesg-cli service:create "$(cat workflow.json | jq -c .)"
 ```
 
 ## Create an invalid exit

@@ -1,0 +1,33 @@
+{
+  "sid": "plasma-guard",
+  "name": "Plasma guard",
+  "source": "QmbtKRgiDxB8dChfdRA2Hk7MYtB1yB3dXrnh2msus7Ft8P",
+  "workflows": [
+    {
+      "key": "invalid_exits",
+      "trigger": {
+        "type": 1,
+        "instanceHash": "AF3chraLuekZB71q3qF2gZuHGyDSqzXxgdFJNCujnHFm",
+        "key": "invalid_exit"
+      },
+      "tasks": [
+        {
+          "instanceHash": "8SvaNJsqEg4JxpVuiiAmk7Xy1kd5iC2dXrbxmwxXBboE",
+          "taskKey": "getChallengeDataInput"
+        },
+        {
+          "instanceHash": "AF3chraLuekZB71q3qF2gZuHGyDSqzXxgdFJNCujnHFm",
+          "taskKey": "getChallengeData"
+        },
+        {
+          "instanceHash": "8SvaNJsqEg4JxpVuiiAmk7Xy1kd5iC2dXrbxmwxXBboE",
+          "taskKey": "challengeStandardExitInputs"
+        },
+        {
+          "instanceHash": "7bqbVtgSrktMTchj97wyfVLvy9we5hoAWjoCKaYWy7cW",
+          "taskKey": "execute"
+        }
+      ]
+    }
+  ]
+}
