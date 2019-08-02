@@ -1,0 +1,29 @@
+name: guard-conversion
+sid: guard-conversion
+configuration:
+  env:
+    - PRIVATE_KEY=
+tasks:
+  getChallengeDataInput:
+    inputs:
+      eth_height: { type: Number }
+      utxo_pos: { type: String }
+      owner: { type: String }
+      currency: { type: String }
+      amount: { type: Number }
+    outputs:
+      utxo_pos: { type: String }
+  challengeStandardExitInputs:
+    inputs:
+      exit_id: { type: String }
+      txbytes: { type: String }
+      input_index: { type: Number }
+      sig: { type: String }
+    outputs:
+      method: { type: String }
+      privateKey: { type: String }
+      inputs:
+        type: Any
+        repeated: true
+
+      
