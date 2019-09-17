@@ -8,7 +8,7 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
 
 | Event | Task | Implementation |
 | - | - | - |
-| invalid_exit | challengeStandardExit | [/plasma-service/index.js#24](/plasma-service/index.js#24) | TODO | 
+| invalid_exit | challengeStandardExit | [invalid-exit.yml](invalid-exit.yml) | 
 | unchallenged_exit | startInFlightExit | TODO | 
 | invalid_block | startInFlightExit | TODO | 
 | block_withholding | startInFlightExit | TODO | 
@@ -33,7 +33,7 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
                 |                                |
                 |    +------------------+        |
                 +--->|                  |--------+
-                     |  Plasma Service  |
+                     |  Plasma Process  |
                      |                  |
                      +------------------+
                      | PRIVATE_KEY      |
@@ -41,33 +41,11 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
 
 ```
 
-## Start the plasma root chain
-
-Service to access to the root contract based on the address in the .env.
-
-Start this service with
+## Start the Plasma Guard
 
 ```bash
-mesg-cli service:dev https://github.com/mesg-foundation/service-ethereum-contract \
-  --env PROVIDER_ENDPOINT=$PLASMA_NETWORK \
-  --env BLOCK_CONFIRMATIONS=0 \
-  --env CONTRACT_ADDRESS=$PLASMA_ADDRESS \
-  --env CONTRACT_ABI="$(curl -s https://raw.githubusercontent.com/omisego/omg-js/master/packages/omg-js-rootchain/src/contracts/RootChain.json | jq .abi)"
-```
-
-## Start the plasma watcher
-
-OmiseGo watcher based on the http://watcher.samrong.omg.network/ API.
-
-Start with 
-```bash
-mesg-cli service:dev https://github.com/mesg-foundation/service-plasma-omisego-watcher
-```
-
-## Deploy the workflow
-
-```
-mesg-cli service:create "$(cat workflow.json | jq -c .)"
+plasma_guard=$(mesg-cli-dev process:compile ./invalid-exit.yml --env PRIVATE_KEY=$ALICE_PRIVATE_KEY --env PROVIDER_ENDPOINT=$PROVIDER_ENDPOINT --dev)
+mesg-cli-dev process:create "$plasma_guard"
 ```
 
 ## Create an invalid exit

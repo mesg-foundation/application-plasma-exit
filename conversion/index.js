@@ -1,9 +1,6 @@
 const mesg = require('mesg-js').service()
 
 mesg.listenTask({
-  getChallengeDataInput: inputs => ({
-    utxo_pos: inputs.utxo_pos
-  }),
   challengeStandardExitInputs: inputs => ({
     method: 'challengeStandardExit',
     privateKey: process.env.PRIVATE_KEY,

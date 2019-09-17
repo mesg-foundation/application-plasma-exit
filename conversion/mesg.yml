@@ -4,15 +4,6 @@ configuration:
   env:
     - PRIVATE_KEY=
 tasks:
-  getChallengeDataInput:
-    inputs:
-      eth_height: { type: Number }
-      utxo_pos: { type: String }
-      owner: { type: String }
-      currency: { type: String }
-      amount: { type: Number }
-    outputs:
-      utxo_pos: { type: String }
   challengeStandardExitInputs:
     inputs:
       exit_id: { type: String }
