@@ -1,15 +1,6 @@
 const mesg = require('mesg-js').application()
 
-const main = async (utxo, privateKey) => {
-  const exitDataRes = await mesg.executeTaskAndWaitResult({
-    instanceHash: await mesg.resolve('plasma-watcher'),
-    taskKey: 'getExitData',
-    inputs: mesg.encodeData(utxo)
-  })
-
-  const exitData = mesg.decodeData(exitDataRes.outputs)
-  console.log('exit data', exitData)
-
+const main = async (exitData, privateKey) => {
   const exitRes = await mesg.executeTaskAndWaitResult({
     instanceHash: await mesg.resolve('evm-contract'),
     taskKey: 'execute',
@@ -28,9 +19,9 @@ const main = async (utxo, privateKey) => {
   console.log(mesg.decodeData(exitRes.outputs))
 }
 
-if (!process.argv[2]) throw new Error('UTXO missing')
+if (!process.argv[2]) throw new Error('exit data missing')
 
-const utxo = JSON.parse(process.argv[2])
+const exitData = JSON.parse(process.argv[2])
 
-console.log(`[ALICE] Exiting`, utxo)
-main(utxo, process.env.ALICE_PRIVATE_KEY)
+console.log(`[ALICE] Exiting`, exitData)
+main(exitData, process.env.ALICE_PRIVATE_KEY)
