@@ -50,7 +50,7 @@ Now you will try to exit the first UTXO that you had after your deposit.
 You already spent this UTXO and send all the amount to Bob so this is an invalid exit.
 
 ```bash
-node exit.js "$(cat utxo.json)"
+node scripts/exit.js "$(cat utxo.json)"
 ```
 
 ## Wait for it

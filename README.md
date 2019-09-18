@@ -44,7 +44,13 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
 ## Start the Plasma Guard
 
 ```bash
-plasma_guard=$(mesg-cli-dev process:compile ./invalid-exit.yml --env PRIVATE_KEY=$ALICE_PRIVATE_KEY --env PROVIDER_ENDPOINT=$PROVIDER_ENDPOINT --dev)
+plasma_guard=$(mesg-cli-dev process:compile ./invalid-exit.yml \
+     --env PRIVATE_KEY=$ALICE_PRIVATE_KEY \
+     --env PROVIDER_ENDPOINT=$PROVIDER_ENDPOINT \
+     --env PLASMA_ADDRESS=$PLASMA_ADDRESS \
+     --env PLASMA_ABI="$(curl -s https://raw.githubusercontent.com/omisego/omg-js/master/packages/omg-js-rootchain/src/contracts/RootChain.json | jq .abi)" \
+     --dev
+)
 mesg-cli-dev process:create "$plasma_guard"
 ```
 

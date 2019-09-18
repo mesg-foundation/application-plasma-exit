@@ -26,6 +26,6 @@ steps:
       env:
         - PROVIDER_ENDPOINT=$(env:PROVIDER_ENDPOINT)
         - BLOCK_CONFIRMATIONS=0
-        - CONTRACT_ADDRESS=0x740ecec4c0ee99c285945de8b44e9f5bfb71eea7
-        - CONTRACT_ABI=[{"constant":false,"inputs":[{"name":"_standardExitId","type":"uint192" },{"name":"_challengeTx","type":"bytes"},{"name":"_inputIndex","type":"uint8"},{"name":"_challengeTxSig","type":"bytes"}],"name":"challengeStandardExit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
+        - CONTRACT_ADDRESS=$(env:PLASMA_ADDRESS)
+        - CONTRACT_ABI=$(env:PLASMA_ABI)
     taskKey: execute
