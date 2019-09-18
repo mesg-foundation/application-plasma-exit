@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "mesg-js": "^4.2.2"
+    "mesg-js": "^4.4.0-beta.2"
   }
 }
