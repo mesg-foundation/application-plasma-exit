@@ -15,7 +15,7 @@ const main = async (address, privateKey, value) => {
     })
   })
 
-  console.log(res)
+  console.log(mesg.decodeData(res.outputs))
 }
 
 if (!process.argv[2]) throw new Error('amount in wei missing')

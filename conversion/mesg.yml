@@ -1,0 +1,20 @@
+name: guard-conversion
+sid: guard-conversion
+configuration:
+  env:
+    - PRIVATE_KEY=
+tasks:
+  challengeStandardExitInputs:
+    inputs:
+      exit_id: { type: String }
+      txbytes: { type: String }
+      input_index: { type: Number }
+      sig: { type: String }
+    outputs:
+      method: { type: String }
+      privateKey: { type: String }
+      inputs:
+        type: Any
+        repeated: true
+
+      

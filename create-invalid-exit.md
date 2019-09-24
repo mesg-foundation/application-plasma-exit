@@ -20,10 +20,14 @@ mesg-cli service:execute plasma-watcher getUTXOs --data address=$ALICE_ADDRESS
 
 Alice has one UTXO
 
-## Save this utxo in a file
+## Prepare to exit
+
+Now you will try to exit the first UTXO that you had after your deposit.
+You already spent this UTXO and send all the amount to Bob so this is an invalid exit.
 
 ```bash
 mesg-cli service:execute plasma-watcher getUTXOs --data address=$ALICE_ADDRESS | jq ".utxos[0]" > utxo.json
+mesg-cli service:execute plasma-watcher getExitData --json utxo.json
 ```
 
 ## Transfer some value to BOB
@@ -50,7 +54,7 @@ Now you will try to exit the first UTXO that you had after your deposit.
 You already spent this UTXO and send all the amount to Bob so this is an invalid exit.
 
 ```bash
-node exit.js "$(cat utxo.json)"
+node scripts/exit.js "$(cat exit.json)"
 ```
 
 ## Wait for it

@@ -1,3 +1,4 @@
 node_modules
 .env
 utxo.json
+exit.json

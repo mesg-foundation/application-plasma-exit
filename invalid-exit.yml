@@ -1,0 +1,31 @@
+key: challenge-invalid-exits
+steps:
+  - type: trigger
+    key: invalid-exit
+    instance:
+      src: https://github.com/mesg-foundation/service-plasma-omisego-watcher#feature/4.4.0-beta
+    eventKey: invalid_exit
+  - type: task
+    key: challenge-data
+    instance:
+      src: https://github.com/mesg-foundation/service-plasma-omisego-watcher#feature/4.4.0-beta
+    taskKey: getChallengeData
+    inputs:
+      utxo_pos:
+        stepKey: invalid-exit
+        key: utxo_pos
+  - type: task
+    instance:
+      src: ./conversion
+      env:
+        - PRIVATE_KEY=$(env:PRIVATE_KEY)
+    taskKey: challengeStandardExitInputs
+  - type: task
+    instance:
+      src: https://github.com/mesg-foundation/service-ethereum-contract#feature/mesg-js4.4.0
+      env:
+        - PROVIDER_ENDPOINT=$(env:PROVIDER_ENDPOINT)
+        - BLOCK_CONFIRMATIONS=0
+        - CONTRACT_ADDRESS=$(env:PLASMA_ADDRESS)
+        - CONTRACT_ABI=$(env:PLASMA_ABI)
+    taskKey: execute

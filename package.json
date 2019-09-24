@@ -1,19 +1,16 @@
 {
-  "name": "omisego",
+  "name": "scripts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "deposit.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@omisego/omg-js-rootchain": "^2.0.0-v0.2",
     "@omisego/omg-js-util": "^2.0.0-v0.2",
-    "bn.js": "^4.11.8",
-    "mesg-js": "^4.2.2"
+    "mesg-js": "^4.4.0-beta.2"
   }
 }
