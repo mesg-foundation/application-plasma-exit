@@ -43,6 +43,13 @@ Based on https://github.com/omisego/elixir-omg/blob/master/docs/api_specs/status
 
 ## Start the Plasma Guard
 
+If you don't already have mesg you should install and run it with:
+```bash
+npm i -g mesg-cli
+mesg-cli daemon:start
+```
+[more information](https://docs.mesg.com/guide/installation.html)
+
 ```bash
 plasma_guard=$(mesg-cli process:compile ./invalid-exit.yml \
      --env PRIVATE_KEY=$ALICE_PRIVATE_KEY \
