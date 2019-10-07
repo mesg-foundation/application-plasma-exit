@@ -27,7 +27,7 @@ You already spent this UTXO and send all the amount to Bob so this is an invalid
 
 ```bash
 mesg-cli service:execute plasma-watcher getUTXOs --data address=$ALICE_ADDRESS | jq ".utxos[0]" > utxo.json
-mesg-cli service:execute plasma-watcher getExitData --json utxo.json
+mesg-cli service:execute plasma-watcher getExitData --json utxo.json > exit.json
 ```
 
 ## Transfer some value to BOB
