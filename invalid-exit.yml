@@ -16,12 +16,6 @@ steps:
         key: utxo_pos
   - type: task
     instance:
-      src: ./conversion
-      env:
-        - PRIVATE_KEY=$(env:PRIVATE_KEY)
-    taskKey: challengeStandardExitInputs
-  - type: task
-    instance:
       src: https://github.com/mesg-foundation/service-ethereum-contract
       env:
         - PROVIDER_ENDPOINT=$(env:PROVIDER_ENDPOINT)
@@ -29,3 +23,11 @@ steps:
         - CONTRACT_ADDRESS=$(env:PLASMA_ADDRESS)
         - CONTRACT_ABI=$(env:PLASMA_ABI)
     taskKey: execute
+    inputs:
+      method: challengeStandardExit
+      privateKey: $(env:PRIVATE_KEY)
+      inputs:
+        - key: exit_id
+        - key: txbytes
+        - key: input_index
+        - key: sig
