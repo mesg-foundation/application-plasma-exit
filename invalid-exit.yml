@@ -25,7 +25,7 @@ steps:
     taskKey: execute
     inputs:
       method: challengeStandardExit
-      privateKey: $(env:PRIVATE_KEY)
+      privateKey: "$(env:PRIVATE_KEY)"
       inputs:
         - key: exit_id
         - key: txbytes
