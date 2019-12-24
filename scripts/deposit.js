@@ -1,14 +1,16 @@
-const mesg = require('mesg-js').application()
+const Application = require('@mesg/application')
 const { transaction } = require('@omisego/omg-js-util')
+
+const mesg = new Application()
 
 const main = async (address, privateKey, value) => {
   const depositTx = await transaction.encodeDeposit(address, value, transaction.ETH_CURRENCY)
 
   const res = await mesg.executeTaskAndWaitResult({
-    instanceHash: await mesg.resolve('evm-contract'),
+    executorHash: await mesg.resolveRunner('evm-contract'),
     taskKey: 'execute',
     inputs: mesg.encodeData({
-      method: "deposit",
+      method: 'deposit',
       privateKey,
       inputs: [depositTx],
       value
