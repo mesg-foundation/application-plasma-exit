@@ -1,17 +1,15 @@
-const mesg = require('mesg-js').application()
+const Application = require('@mesg/application')
+
+const mesg = new Application()
 
 const main = async (exitData, privateKey) => {
   const exitRes = await mesg.executeTaskAndWaitResult({
-    instanceHash: await mesg.resolve('evm-contract'),
+    executorHash: await mesg.resolveRunner('evm-contract'),
     taskKey: 'execute',
     inputs: mesg.encodeData({
-      method: "startStandardExit",
+      method: 'startStandardExit',
       privateKey,
-      inputs: [
-        exitData.utxo_pos,
-        exitData.txbytes,
-        exitData.proof
-      ],
+      inputs: [exitData.utxo_pos, exitData.txbytes, exitData.proof],
       value: '31415926535'
     })
   })
