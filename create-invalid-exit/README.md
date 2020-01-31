@@ -9,7 +9,7 @@ Alice has no UTXO to spend
 ## Alice deposit
 
 ```bash
-node scripts/deposit.js 100000
+npm run deposit
 ```
 
 ## Wait for utxo to be added on the childchain
@@ -33,12 +33,12 @@ mesg-cli service:execute plasma-watcher getExitData --json utxo.json > exit.json
 ## Transfer some value to BOB
 
 ```bash
-mesg-cli service:execute plasma-watcher sendTransaction --data from=$ALICE_ADDRESS --data to=$BOB_ADDRESS --data amount=100000 --data privateKey=$ALICE_PRIVATE_KEY --data utxos="[$(cat utxo.json)]" 
+mesg-cli service:execute plasma-watcher sendTransaction --data from=$ALICE_ADDRESS --data to=$BOB_ADDRESS --data amount=10000 --data privateKey=$ALICE_PRIVATE_KEY --data utxos="[$(cat utxo.json)]" 
 ```
 
 ## Wait for transaction
 
-http://quest.samrong.omg.network/
+https://quest-pre-lumphini.omg.network/
 
 ## Check Alice UTXO
 
@@ -54,7 +54,7 @@ Now you will try to exit the first UTXO that you had after your deposit.
 You already spent this UTXO and send all the amount to Bob so this is an invalid exit.
 
 ```bash
-node scripts/exit.js "$(cat exit.json)"
+npm run exit
 ```
 
 ## Wait for it

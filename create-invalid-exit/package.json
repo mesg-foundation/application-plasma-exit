@@ -1,0 +1,19 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deposit.js",
+  "scripts": {
+    "deposit": "node ./deposit.js",
+    "exit": "node ./exit.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@omisego/omg-js-rootchain": "^3.0.0-alpha.6",
+    "@omisego/omg-js-util": "^3.0.0-alpha.6",
+    "bn.js": "^5.1.1",
+    "web3": "^1.2.5"
+  }
+}
