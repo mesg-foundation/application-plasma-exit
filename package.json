@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@mesg/application": "^0.2.0",
-    "@omisego/omg-js-util": "^2.0.0-v0.2"
+    "@omisego/omg-js-util": "^3.0.0-0.4.1"
   }
 }
